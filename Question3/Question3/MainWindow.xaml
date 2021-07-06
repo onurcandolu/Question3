@@ -1,0 +1,96 @@
+﻿<Window x:Class="Question3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Question3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800"
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        Background="LightGray"
+        
+        >
+
+    <Grid MouseDown="RowDefinition_MouseDown" >
+        <Grid.RowDefinitions >
+            <RowDefinition Height="50" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition  Width="250" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Background="#161555" Grid.Column="0" Grid.RowSpan="2"></Border>
+        <Border Background="LightGray" Grid.Column="1" Grid.Row="0">
+            <Image MouseDown="languageSelect" x:Name="tr" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\tr.png" Margin="500,0,0,0"  Width="40" Height="40"/>
+        </Border>
+        <Image MouseDown="languageSelect" x:Name="en" Grid.Column="1" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\en.png" Margin="400,0,0,0" Width="40" Height="40"/>
+
+        <TextBlock x:Name="Title" Text="Activity Account" Grid.Column="0" Grid.Row="0"
+                    FontSize="30" FontStyle="Italic" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Foreground="LightBlue"/>
+        <Button x:Name="MainButton" Margin="0,284,0,266"  Grid.Row="1" Content="Main Page" BorderThickness="0"
+                FontSize="20" Background="#161555" Foreground="Gray" Click="MenuContol"/>
+        <Button x:Name="ListButton" Margin="0,360,0,190"  Grid.Row="1" Content="List All Activity" BorderThickness="0"
+                FontSize="20" Background="#161555" Foreground="Gray" Click="MenuContol"/>
+        <Button x:Name="AddButton" Margin="0,432,0,118"  Grid.Row="1" Content="Add New Activity" Click="MenuContol" BorderThickness="0"
+                FontSize="20" Background="#161555" Foreground="Gray"/>
+        <Button x:Name="ExitButton" Margin="0,498,0,52"  Grid.Row="1" Content="Exit" Click="MenuContol"  BorderThickness="0"
+                FontSize="20" Background="#161555" Foreground="Gray" />
+        <Grid/>
+
+
+
+
+        <Grid  x:Name="Main" Grid.Column="1" Grid.Row="1" Visibility="Visible" Height="600" VerticalAlignment="Top">
+            <TextBlock x:Name="mainText" Margin="24,268,24,150" TextWrapping="Wrap" FontFamily="calibri" FontSize="27" FontStyle="Italic" FontStretch="Medium" FontWeight="ExtraLight"
+                       Text="     This Program is a program that manage the list of monthly transactions of the user. To do the calculation, please press the add activity button and you can see the result by listing." />
+        </Grid>
+        <Grid  x:Name="Data" Grid.Column="1" Grid.Row="1"  Visibility="Hidden"></Grid>
+        <Grid  x:Name="Add" Grid.Column="1" Grid.Row="1"  Visibility="Hidden">
+            <Border x:Name="salaryBorder"  BorderBrush="DarkRed" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-300,-500,0,0"
+                    Height="70" Width="70" >
+                <Image x:Name="salary"  Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\salary.png" 
+                       Height="64" Width="64"  MouseDown="BorderClickCheck" />
+            </Border>
+            <Border x:Name="carBorder" BorderBrush="DarkRed" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-100,-500,0,0" 
+                    Height="70" Width="70" >
+                <Image x:Name="car" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\car.png" 
+                       Height="64" Width="64" MouseDown="BorderClickCheck"/>
+            </Border>
+            <Border x:Name="shopingBorder"   BorderBrush="DarkRed" VerticalAlignment="Center" Margin="100,-500,0,0" HorizontalAlignment="Center" 
+                    Height="70" Width="70" >
+                <Image x:Name="shoping" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\shopping.png" 
+                       Height="64" Width="64" MouseDown="BorderClickCheck"/>
+            </Border>
+            <Border x:Name="houseBorder"   BorderBrush="DarkRed" VerticalAlignment="Center" Margin="300,-500,0,0" HorizontalAlignment="Center"
+                    Height="70" Width="70" >
+                <Image x:Name="house"  Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\house.png"
+                       Height="64" Width="64" MouseDown="BorderClickCheck"/>
+            </Border>
+            <Border x:Name="coffeeBorder"   BorderBrush="DarkRed" VerticalAlignment="Center" Margin="-100,-300,0,0" HorizontalAlignment="Center"
+                    Height="70" Width="70" >
+                <Image  x:Name="coffee" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\coffee.png" 
+                       Height="64" Width="64" MouseDown="BorderClickCheck"/>
+            </Border>
+            <Border x:Name="burgerBorder"   BorderBrush="DarkRed" VerticalAlignment="Center" Margin="100,-300,0,0" HorizontalAlignment="Center"
+                    Height="70" Width="70" >
+                <Image x:Name="burger" Source="C:\Users\onurcan.ArkV\source\repos\Question3\Question3\Icon\burger.png" 
+                       Height="64" Width="64" MouseDown="BorderClickCheck"/>
+            </Border>
+
+            <TextBox x:Name="activity" HorizontalAlignment="Left" Margin="40,256,0,0" Text="Enter Activity Name ..." FontSize="30" BorderThickness="1" 
+                     GotFocus="activity_GotFocus" Background="LightGray" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Height="44" Padding="10,0,10,0"/>
+            <TextBox x:Name="amount" HorizontalAlignment="Left" Margin="40,340,0,0" Text="Enter Amount of Activity..." FontSize="30" BorderThickness="1"
+               GotFocus="activity_GotFocus"  PreviewTextInput="NumberValidationTextBox"  Background="LightGray" TextAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Top" Width="452" Height="44" Padding="10,0,10,0"/>
+            <RadioButton x:Name="earning" Content="Earning" HorizontalAlignment="Left" Margin="100,250,0,0" FontSize="18" FontWeight="DemiBold" BorderThickness="5" 
+                      Background="LightGray" VerticalAlignment="Center" Width="452" Height="44" Padding="10,0,10,0" GroupName="radio" IsChecked="True"></RadioButton>
+            <RadioButton x:Name="expense" Content="Expense"  HorizontalAlignment="Left" Margin="300,250,0,0" FontSize="18" BorderThickness="5" 
+                      Background="LightGray" VerticalAlignment="Center" Width="452" Height="44" Padding="10,0,10,0"  GroupName="radio"  FontWeight="DemiBold"/>
+            <Button x:Name="addActivityButton" Click="AddActivity" Content="Add New Activity" Background="LightGray" BorderThickness="2" FontSize="30" HorizontalAlignment="Left" Margin="40,456,0,0" VerticalAlignment="Top" Height="51" Width="452"/>
+        </Grid>
+
+        <Grid  x:Name="User" Grid.Column="1" Grid.Row="1" Visibility="Hidden"></Grid>
+         </Grid>
+</Window>
